@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 use App\Category;
 use App\Product;
@@ -10,7 +9,7 @@ class MainController extends Controller
     public function index()
     {
         $products = Product::get();
-        // $images = Image::get();
+        $images = Image::get();
         // dd($products);
         return view('index', compact('products'));
     }
@@ -30,7 +29,7 @@ class MainController extends Controller
     {
         $categoryObject = Category::where('code', $category)->first();
         //   dd($categoryObject->id);
-        $products = Product::where('category_id', $categoryObject->id)->first();
+        $products = Product::where('category_id', $categoryObject->id)->get();
         // dd($products->image);
         return view('category', compact('category','products'));
     }

@@ -13,8 +13,8 @@
 						<img src="./img/shop01.png" alt="">
 					</div>
 					<div class="shop-body">
-						<h3>Laptop<br>Collection</h3>
-						<a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+						<h3>Коллекция<br>Ноутбуков</h3>
+						<a href="#" class="cta-btn">Купить сейчас <i class="fa fa-arrow-circle-right"></i></a>
 					</div>
 				</div>
 			</div>
@@ -27,8 +27,8 @@
 						<img src="./img/shop03.png" alt="">
 					</div>
 					<div class="shop-body">
-						<h3>Accessories<br>Collection</h3>
-						<a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+						<h3>Коллекция<br>Аксессуаров</h3>
+						<a href="#" class="cta-btn">Купить сейчас <i class="fa fa-arrow-circle-right"></i></a>
 					</div>
 				</div>
 			</div>
@@ -41,8 +41,8 @@
 						<img src="./img/shop02.png" alt="">
 					</div>
 					<div class="shop-body">
-						<h3>Cameras<br>Collection</h3>
-						<a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+						<h3>Коллекция<br>Камер</h3>
+						<a href="#" class="cta-btn">Купить сейчас <i class="fa fa-arrow-circle-right"></i></a>
 					</div>
 				</div>
 			</div>

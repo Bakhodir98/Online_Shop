@@ -176,7 +176,7 @@
                 <li><a href="{{url('/laptop')}}">Ноутбуки</a></li>
                 <li><a href="{{url('/mobile')}}">Смартфоны</a></li>
                 <li><a href="{{url('/camera')}}">Камеры</a></li>
-                {{-- <li><a href="#">Accessories</a></li> --}}
+                <li><a href="{{url('/accessory')}}">Аксессуары</a></li>
             </ul>
             <!-- /NAV -->
         </div>
