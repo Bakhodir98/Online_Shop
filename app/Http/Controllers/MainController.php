@@ -9,8 +9,6 @@ class MainController extends Controller
     public function index()
     {
         $products = Product::get();
-        $images = Image::get();
-        // dd($products);
         return view('index', compact('products'));
     }
     public function categories()
@@ -18,19 +16,29 @@ class MainController extends Controller
         $categories = Category::get();
         return view('categories', compact('categories'));
     }
-    public function product($product_code = null)
+    public function product($category = null,$product_code = null)
     {
-        // dd($product);
         $product = Product::where('code',$product_code)->first();
         $images = Image::get();
-        return view('product', compact('product', 'images'));
+        return view('product', compact('product', 'images', 'category'));
     }
     public function category($category = null)
     {
+        // dd($category);
         $categoryObject = Category::where('code', $category)->first();
-        //   dd($categoryObject->id);
         $products = Product::where('category_id', $categoryObject->id)->get();
         // dd($products->image);
         return view('category', compact('category','products'));
+    }
+    public function card() {
+        return view('card');
+    }
+    public function basket() 
+    {
+        return view('basket');
+    }
+    public function orderPlace() 
+    {
+        return view('order');
     }
 }

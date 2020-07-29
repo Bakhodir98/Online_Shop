@@ -55,9 +55,6 @@
 					</div>
 					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem aut quasi quaerat aliquid
 						dolor excepturi suscipit porro corporis et. Cupiditate!</p>
-
-
-
 					<div class="add-to-cart">
 						<div class="product-options">
 							{{-- <label>
@@ -347,7 +344,7 @@
 
 			<div class="col-md-12">
 				<div class="section-title text-center">
-					<h3 class="title">Related Products</h3>
+					<h3 class="title">Похожые продукты</h3>
 				</div>
 			</div>
 

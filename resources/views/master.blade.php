@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <title>Интернет магазин Electro | Бытовая техника, смартфоны, ноутбуки, телевизоры, доставка по
-        Ташкенту и всей Республики Узбекистан</title>
+    <title>Интернет магазин Electro @yield('title')</title>
 
     <!-- Google font -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
     <!-- Bootstrap -->
     <link type="text/css" rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="/home/bakhodir/Desktop/assets/css/bootstrap.min.css">
 
     <!-- Slick -->
     <link type="text/css" rel="stylesheet" href="{{ asset('css/slick.css') }}" />
@@ -28,6 +28,8 @@
 
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="{{ asset('css/style.css') }}" />
+
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -64,8 +66,8 @@
                 <!-- LOGO -->
                 <div class="col-md-3">
                     <div class="header-logo">
-                        <a href="#" class="logo">
-                            <img src="./img/logo.png" alt="">
+                        <a href="{{url('/')}}" class="logo">
+                            <img src="{{url('img/logo.png')}}" alt="">
                         </a>
                     </div>
                 </div>
@@ -206,7 +208,7 @@
 </div>
 <!-- /BREADCRUMB -->
 
-@yield('content');
+@yield('content')
 
 <!-- NEWSLETTER -->
 <div id="newsletter" class="section">
@@ -349,6 +351,8 @@
 <script src="{{ asset('js/nouislider.min.js') }}"></script>
 <script src="{{ asset('js/jquery.zoom.min.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
+<script src="/home/bakhodir/Desktop/assets/js/jquery.min.js"></script>
+<script src="/home/bakhodir/Desktop/assets/js/bootstrap.min.js"></script>
 
 </body>
 
