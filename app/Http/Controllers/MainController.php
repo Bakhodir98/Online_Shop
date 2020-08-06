@@ -22,23 +22,17 @@ class MainController extends Controller
         $images = Image::get();
         return view('product', compact('product', 'images', 'category'));
     }
-    public function category($category = null)
+    public function category($code = null)
     {
         // dd($category);
-        $categoryObject = Category::where('code', $category)->first();
-        $products = Product::where('category_id', $categoryObject->id)->get();
+        $category = Category::where('code', $code)->first();
+        // $products = Product::where('category_id', $categoryObject->id)->get();
         // dd($products->image);
-        return view('category', compact('category','products'));
+        // dd($category);
+        return view('category', compact('category'));
     }
     public function card() {
         return view('card');
     }
-    public function basket() 
-    {
-        return view('basket');
-    }
-    public function orderPlace() 
-    {
-        return view('order');
-    }
+    
 }

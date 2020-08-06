@@ -17,8 +17,10 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($order->products as $product)
                     <tr>
-                        <td><a href="#"><img height="56px" src="">Название продукта</a></td>
+                        <td><a href="{{route('product',[$product->category->code,$product->name])}}"><img height="56px"
+                                    src="">{{$product->name}}</a></td>
                         <td><span class="badge">1</span>
                             <div class="btn-group">
                                 <button type="button" class="btn btn-danger btn_background"><span
@@ -27,13 +29,15 @@
                                         class="glyphicon glyphicon-plus"></span></button>
                             </div>
                         </td>
-                        <td>1 200 000 сум</td>
-                        <td>1 200 000 сум</td>
+                        <td>{{$product->price}}</td>
+                        <td>{{$product->price}}</td>
                     </tr>
+                    @endforeach
                     <tr>
                         <td colspan="3">Общая Стоимость</td>
                         <td>1 200 000 сум</td>
                     </tr>
+
                 </tbody>
             </table>
             <br>

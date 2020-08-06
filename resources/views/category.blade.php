@@ -7,13 +7,7 @@
 		<!-- row -->
 		<div class="row">
 			<h2>
-				@if($category == 'mobile')
-				Смартфоны
-				@elseif($category == 'laptop')
-				Ноутбуки
-				@else
-				Камеры
-				@endif
+				{{$category->name}}
 				{{-- @foreach ($products as $product)
 				{{dd($product)}}
 				@include('card',compact('product'))
@@ -29,7 +23,7 @@
 					<div id="tab1" class="tab-pane active">
 						<div class="products-slick" data-nav="#slick-nav-1">
 
-							@foreach($products as $product)
+							@foreach($category->products as $product)
 							@include('card',compact('product'))
 							@endforeach
 						</div>

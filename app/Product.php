@@ -6,5 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    //
+    // public function getCategory()
+    // {
+    //    return Category::find($this->category_id);
+    // }
+    public function Category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

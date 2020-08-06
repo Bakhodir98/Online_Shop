@@ -10,11 +10,10 @@
     <title>Интернет магазин Electro @yield('title')</title>
 
     <!-- Google font -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+    {{-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet"> --}}
 
     <!-- Bootstrap -->
     <link type="text/css" rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
-    <link rel="stylesheet" href="/home/bakhodir/Desktop/assets/css/bootstrap.min.css">
 
     <!-- Slick -->
     <link type="text/css" rel="stylesheet" href="{{ asset('css/slick.css') }}" />
@@ -113,7 +112,7 @@
                                 <div class="cart-list">
                                     <div class="product-widget">
                                         <div class="product-img">
-                                            <img src="./img/product01.png" alt="">
+                                            <img src="{{ asset('img/product01.png') }}" alt="">
                                         </div>
                                         <div class="product-body">
                                             <h3 class="product-name"><a href="#">product name goes here</a></h3>
@@ -138,7 +137,7 @@
                                     <h5>SUBTOTAL: $2940.00</h5>
                                 </div>
                                 <div class="cart-btns">
-                                    <a href="#">View Cart</a>
+                                    <a href="{{route('basket')}}">Посмотреть корзину</a>
                                     <a href="#">Checkout <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
@@ -175,10 +174,10 @@
                 <li class="active"><a href="{{ url('/') }}">Главная</a></li>
                 {{-- <li><a href="#">Hot Deals</a></li> --}}
                 {{-- <li><a href="{{ url('categories') }}">Категории</a></li> --}}
-                <li><a href="{{url('/laptop')}}">Ноутбуки</a></li>
-                <li><a href="{{url('/mobile')}}">Смартфоны</a></li>
-                <li><a href="{{url('/camera')}}">Камеры</a></li>
-                <li><a href="{{url('/accessory')}}">Аксессуары</a></li>
+                <li><a href="{{url('/Ноутбуки')}}">Ноутбуки</a></li>
+                <li><a href="{{url('/Мобильные_телефоны')}}">Смартфоны</a></li>
+                <li><a href="{{url('/Камеры')}}">Камеры</a></li>
+                {{-- <li><a href="{{url('/аксессуары')}}">Аксессуары</a></li> --}}
             </ul>
             <!-- /NAV -->
         </div>
@@ -351,9 +350,6 @@
 <script src="{{ asset('js/nouislider.min.js') }}"></script>
 <script src="{{ asset('js/jquery.zoom.min.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
-<script src="/home/bakhodir/Desktop/assets/js/jquery.min.js"></script>
-<script src="/home/bakhodir/Desktop/assets/js/bootstrap.min.js"></script>
-
 </body>
 
 </html>
