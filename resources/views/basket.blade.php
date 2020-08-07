@@ -17,25 +17,34 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {{-- @if(!is_null($order->products)) --}}
                     @foreach ($order->products as $product)
                     <tr>
-                        <td><a href="{{route('product',[$product->category->code,$product->name])}}"><img height="56px"
-                                    src="">{{$product->name}}</a></td>
-                        <td><span class="badge">1</span>
+                        <td><a href="{{route('product',[$product->category->code,$product->name])}}">
+                                <img height="56px" src="{{asset('img/'.$product->image)}}">{{$product->name}}</a>
+                        </td>
+                        <td><span class="badge">{{$product->pivot->count}}</span>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-danger btn_background"><span
-                                        class="glyphicon glyphicon-minus"></span></button>
-                                <button type="button" class="btn btn-info"><span
-                                        class="glyphicon glyphicon-plus"></span></button>
+                                <form method="POST" action="{{route('basket-remove', $product)}}">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger btn_background"><span
+                                            class="glyphicon glyphicon-minus"></span></button>
+                                </form>
+                                <form method="POST" action="{{route('basket-add', $product)}}">
+                                    @csrf
+                                    <button type="submit" class="btn btn-info"><span
+                                            class="glyphicon glyphicon-plus"></span></button>
+                                </form>
                             </div>
                         </td>
                         <td>{{$product->price}}</td>
-                        <td>{{$product->price}}</td>
+                        <td>{{$product->getPriceForCount()}}</td>
                     </tr>
                     @endforeach
+                    {{-- @endif --}}
                     <tr>
                         <td colspan="3">Общая Стоимость</td>
-                        <td>1 200 000 сум</td>
+                        <td>{{$order->getFullPrice()}} сум</td>
                     </tr>
 
                 </tbody>
