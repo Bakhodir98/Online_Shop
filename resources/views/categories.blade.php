@@ -1,4 +1,5 @@
-@extends('master')
+@extends('layouts/master')
+
 @section('content')
 <!-- SECTION -->
 <div class="section">
@@ -7,7 +8,7 @@
         <!-- row -->
         <div class="row">
             @foreach($categories as $category)
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <h2>{{$category->name}}</h2>
                 <div>
                     <a href="{{$category->code}}"><img class="image" src="{{$category->image}}" alt=""></a>

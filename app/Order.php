@@ -20,4 +20,30 @@ class Order extends Model
         }
         return $sum;
     }
+    public function getFullCount()
+    {
+        $count = 0;
+        foreach($this->products as $product)
+        {
+            $count += $product->getCount();
+        }
+        return $count;
+    }
+    public function saveOrder($name, $phone)
+    {
+        if($this->status == 0) 
+        {
+            $this->name = $name;
+            $this->phone = $phone;
+            $this->status = 1;
+            $this->save();
+            session()->forget('orderId');
+
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 } 

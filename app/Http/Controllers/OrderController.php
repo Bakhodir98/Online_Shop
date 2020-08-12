@@ -82,4 +82,9 @@ class OrderController extends Controller
     {
         //
     }
+    public function orders()
+    {
+        $orders = Order::where('status', 1)->get();
+        return view('auth.orders.order', compact('orders'));
+    }
 }

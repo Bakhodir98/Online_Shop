@@ -1,4 +1,5 @@
-@extends('master')
+@extends('layouts/master')
+
 @section('content')
 <!-- SECTION -->
 <div class="section">

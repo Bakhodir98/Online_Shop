@@ -10,31 +10,31 @@
                         <li>
                             <div>
                                 <h3>02</h3>
-                                <span>Days</span>
+                                <span>День</span>
                             </div>
                         </li>
                         <li>
                             <div>
                                 <h3>10</h3>
-                                <span>Hours</span>
+                                <span>час</span>
                             </div>
                         </li>
                         <li>
                             <div>
                                 <h3>34</h3>
-                                <span>Mins</span>
+                                <span>Минуты</span>
                             </div>
                         </li>
                         <li>
                             <div>
                                 <h3>60</h3>
-                                <span>Secs</span>
+                                <span>Секундов</span>
                             </div>
                         </li>
                     </ul>
-                    <h2 class="text-uppercase">hot deal this week</h2>
-                    <p>New Collection Up to 50% OFF</p>
-                    <a class="primary-btn cta-btn" href="#">Shop now</a>
+                    <h2 class="text-uppercase">Акция до следущий недели</h2>
+                    <p>Скидка товаров до 50%</p>
+                    <a class="primary-btn cta-btn" href="#">Купить сейчас</a>
                 </div>
             </div>
         </div>
@@ -57,10 +57,10 @@
                     <h3 class="title">Топ продаваемых товаров</h3>
                     <div class="section-nav">
                         <ul class="section-tab-nav tab-nav">
-                            <li class="active"><a data-toggle="tab" href="#tab2">Laptops</a></li>
-                            <li><a data-toggle="tab" href="#tab2">Smartphones</a></li>
-                            <li><a data-toggle="tab" href="#tab2">Cameras</a></li>
-                            <li><a data-toggle="tab" href="#tab2">Accessories</a></li>
+                            <li class="active"><a data-toggle="tab" href="#tab1">Ноутбуки</a></li>
+                            <li><a data-toggle="tab" href="#tab1">Смартфоны</a></li>
+                            <li><a data-toggle="tab" href="#tab1">Камеры</a></li>
+                            <li><a data-toggle="tab" href="#tab1">Аксессуары</a></li>
                         </ul>
                     </div>
                 </div>

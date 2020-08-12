@@ -2276,3 +2276,9 @@ h2 {
     margin: 0 auto;
     padding: 30px 0;
   }
+  div.form-inline form{
+    display: inline;
+  }
+  .list li{
+      margin:5px;
+  }

@@ -1,4 +1,5 @@
-@extends('master')
+@extends('layouts/master')
+
 @section('content')
 <!-- SECTION -->
 <div class="section">
@@ -24,7 +25,7 @@
 						<div class="products-slick" data-nav="#slick-nav-1">
 
 							@foreach($category->products as $product)
-							@include('card',compact('product'))
+							@include('layouts/card',compact('product'))
 							@endforeach
 						</div>
 						<div id="slick-nav-1" class="products-slick-nav"></div>

@@ -1,4 +1,4 @@
-@extends('master')
+@extends('layouts/master')
 @section('content')
 <div class="container">
     <div class="starter-template">
@@ -24,7 +24,7 @@
                                 <img height="56px" src="{{asset('img/'.$product->image)}}">{{$product->name}}</a>
                         </td>
                         <td><span class="badge">{{$product->pivot->count}}</span>
-                            <div class="btn-group">
+                            <div class="btn-group form-inline">
                                 <form method="POST" action="{{route('basket-remove', $product)}}">
                                     @csrf
                                     <button type="submit" class="btn btn-danger btn_background"><span
@@ -37,8 +37,8 @@
                                 </form>
                             </div>
                         </td>
-                        <td>{{$product->price}}</td>
-                        <td>{{$product->getPriceForCount()}}</td>
+                        <td>{{$product->price}} сум.</td>
+                        <td>{{$product->getPriceForCount()}} сум.</td>
                     </tr>
                     @endforeach
                     {{-- @endif --}}
@@ -51,7 +51,7 @@
             </table>
             <br>
             <div class="btn-group pull-right" role="group">
-                <a type="button" class="btn btn-danger btn_background" href="basket/place">ОФОРМИТЬ</a>
+                <a type="button" class="btn btn-danger btn_background" href="basket/place">Оформить</a>
             </div>
         </div>
 

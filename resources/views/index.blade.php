@@ -1,4 +1,4 @@
-@extends('master')
+@extends('layouts/master')
 @section('title', '| Бытовая техника, смартфоны, ноутбуки, телевизоры, доставка по
 Ташкенту и всей Республики Узбекистан')
 
@@ -37,7 +37,7 @@
 						<div class="products-slick" data-nav="#slick-nav-1">
 
 							@foreach($products as $product)
-							@include('card',compact('product'))
+							@include('layouts/card',compact('product'))
 							@endforeach
 						</div>
 						<div id="slick-nav-1" class="products-slick-nav"></div>

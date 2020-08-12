@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    protected $fillable = ['code', 'name', 'desription', 'details', 'price', 'old_price'];
     // public function getCategory()
     // {
     //    return Category::find($this->category_id);
@@ -14,13 +15,19 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
-    public function getPriceForCount() 
+    public function getPriceForCount()
     {
-        if(!is_Null($this->pivot))
-        {
+        if (!is_Null($this->pivot)) {
             $price = (int) $this->price;
             return $this->pivot->count * $price;
         }
         return $this->price;
+    }
+    public function getCount()
+    {
+        if (!is_Null($this->pivot)) {
+            return $this->pivot->count;
+        }
+        return 0;
     }
 }

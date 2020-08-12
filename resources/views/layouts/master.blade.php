@@ -50,7 +50,13 @@
             </ul>
             <ul class="header-links pull-right">
                 <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
-                <li><a href="#"><i class="fa fa-user-o"></i> Мой аккаунт</a></li>
+                @guest
+                <li><a href="{{route('login')}}"><i class="fa fa-user-o"></i> Мой аккаунт</a></li>
+                @endguest
+                @auth
+                <li><a href="{{route('home')}}"><i class="fa fa-user-o"></i> Мой аккаунт</a></li>
+                <li><a href="{{route('get-logout')}}">Выйти</a></li>
+                @endauth
             </ul>
         </div>
     </div>
@@ -106,21 +112,34 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>Корзина</span>
-                                <div class="qty">3</div>
+                                @if(session()->has('orderId'))
+                                <div class="qty">{{$order->getFullCount()}}</div>
+                                @else
+                                <div class="qty">0</div>
+                                @endif
                             </a>
                             <div class="cart-dropdown">
                                 <div class="cart-list">
+                                    @if(session()->has('orderId'))
+                                    @foreach ($order->products as $product)
                                     <div class="product-widget">
                                         <div class="product-img">
-                                            <img src="{{ asset('img/product01.png') }}" alt="">
+                                            <img src="{{asset('img/'.$product->image)}}" alt="">
                                         </div>
                                         <div class="product-body">
-                                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                            <h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
+                                            <h3 class="product-name"><a href="#">{{$product->name}}</a></h3>
+                                            <h4 class="product-price"><span
+                                                    class="qty">{{$product->pivot->count}}x</span>{{$product->price}}
+                                                сум.</h4>
                                         </div>
-                                        <button class="delete"><i class="fa fa-close"></i></button>
+                                        <form method="POST" action="{{route('basket-remove', $product)}}">
+                                            @csrf
+                                            <button class="delete" type="submit"><i class="fa fa-close"></i></button>
+                                        </form>
                                     </div>
-
+                                    @endforeach
+                                    @endif
+                                    {{-- 
                                     <div class="product-widget">
                                         <div class="product-img">
                                             <img src="./img/product02.png" alt="">
@@ -130,15 +149,28 @@
                                             <h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
                                         </div>
                                         <button class="delete"><i class="fa fa-close"></i></button>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="cart-summary">
-                                    <small>3 Item(s) selected</small>
-                                    <h5>SUBTOTAL: $2940.00</h5>
+                                    <small>
+                                        @if(session()->has('orderId'))
+                                        {{$order->getFullCount()}}
+                                        @else
+                                        0
+                                        @endif
+                                        кол-во товаров</small>
+                                    <h5>Общая сумма:
+                                        @if(session()->has('orderId'))
+                                        {{$order->getFullPrice()}}
+                                        @else
+                                        0
+                                        @endif
+                                        сум.</h5>
                                 </div>
                                 <div class="cart-btns">
-                                    <a href="{{route('basket')}}">Посмотреть корзину</a>
-                                    <a href="#">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="{{route('basket')}}">Корзина</a>
+                                    <a href="{{route('orderPlace')}}">Оформить <i class="fa fa-arrow-circle-right">
+                                        </i></a>
                                 </div>
                             </div>
                         </div>
@@ -172,12 +204,12 @@
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
                 <li class="active"><a href="{{ url('/') }}">Главная</a></li>
-                {{-- <li><a href="#">Hot Deals</a></li> --}}
-                {{-- <li><a href="{{ url('categories') }}">Категории</a></li> --}}
+                {{-- <li><a href="{{route('hot-deals')}}">Акции</a></li> --}}
+                <li><a href="{{ url('categories') }}">Категории</a></li>
                 <li><a href="{{url('/Ноутбуки')}}">Ноутбуки</a></li>
                 <li><a href="{{url('/Мобильные_телефоны')}}">Смартфоны</a></li>
                 <li><a href="{{url('/Камеры')}}">Камеры</a></li>
-                {{-- <li><a href="{{url('/аксессуары')}}">Аксессуары</a></li> --}}
+                <li><a href="{{url('/Аксессуары')}}">Аксессуары</a></li>
             </ul>
             <!-- /NAV -->
         </div>
@@ -206,7 +238,11 @@
     <!-- /container -->
 </div>
 <!-- /BREADCRUMB -->
-
+@if (session()->has('success'))
+<p class="alert alert-success" style="text-align: center">{{session()->get('success')}}</p>
+@elseif(session()->has('warning'))
+<p class="alert alert-warning" style="text-align: center">{{session()->get('warning')}}</p>
+@endif
 @yield('content')
 
 <!-- NEWSLETTER -->

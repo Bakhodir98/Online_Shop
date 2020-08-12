@@ -1,4 +1,5 @@
-@extends('master')
+@extends('layouts/master')
+
 @section('title','Корзина')
 @section('content')
 <!-- SECTION -->
@@ -12,8 +13,8 @@
         <div class="container justify-content-center">
             <!-- row -->
             <div class="row ">
-                <p>Общая стоимость заказа: <b>1 200 00 сум</b></p>
-                <form action="" method="POST">
+                <p>Общая стоимость заказа: <b>{{$order->getFullPrice()}} сум</b></p>
+                <form action="{{route('basket-confirm')}}" method="POST">
                     <div>
                         <p>Укажите свои имя и номер телефона, чтобы наш менеджер мог с вам связаться:</p>
                         <div class="container order-place">
@@ -28,7 +29,8 @@
                                 <input type="text" name="phone" id="phone" value="" class="form-control">
                             </div>
                         </div>
-                        <input type="hidden" name="_tokern" value="qsvmdfjknbdmfmfldsfvlssdvfkmhrlkmtg">
+                        {{-- <input type="hidden" name="_tokern" value="qsvmdfjknbdmfmfldsfvlssdvfkmhrlkmtg"> --}}
+                        @csrf
                         <input type="submit" class="btn btn-danger btn_background" href="#" value="Подтвердите заказ">
                     </div>
                 </form>
