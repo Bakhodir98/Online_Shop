@@ -44,15 +44,15 @@
                         rows="7">@isset($category){{$category->description}}@endisset</textarea>
                 </div>
             </div>
-            {{-- <div class="input-group row">
+            <div class="input-group row">
                 <label for="image" class="col-sm-2 col-form-label">Картинка: </label>
                 <div class="col-sm-10">
                     <label class="btn btn-default btn-file">
                         Загрузить
-                        <input type="file" style="display:none" name="name" id="name">
+                        <input type="file" style="display:none" name="image" id="image">
                     </label>
                 </div>
-            </div> --}}
+            </div>
             <button class="btn btn-success">Сохранить</button>
         </div>
     </form>

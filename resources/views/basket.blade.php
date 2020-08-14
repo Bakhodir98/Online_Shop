@@ -21,7 +21,7 @@
                     @foreach ($order->products as $product)
                     <tr>
                         <td><a href="{{route('product',[$product->category->code,$product->name])}}">
-                                <img height="56px" src="{{asset('img/'.$product->image)}}">{{$product->name}}</a>
+                                <img height="56px" src="{{Storage::url($product->image)}}">{{$product->name}}</a>
                         </td>
                         <td><span class="badge">{{$product->pivot->count}}</span>
                             <div class="btn-group form-inline">

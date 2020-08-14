@@ -32,7 +32,7 @@
                                 type="button">Редактировать</a>
                             @csrf
                             @method('DELETE')
-                            <input class="btn btn-danger" type="submit" value="Удалить">
+                            <input class="btn btn-danger" type="submit" value="Удалить" onclick="Confirm()">
                         </form>
                     </div>
                 </td>

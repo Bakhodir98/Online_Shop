@@ -11,7 +11,8 @@
             <div class="col-md-3">
                 <h2>{{$category->name}}</h2>
                 <div>
-                    <a href="{{$category->code}}"><img class="image" src="{{$category->image}}" alt=""></a>
+                    <a href="{{$category->code}}"><img class="image" src="{{Storage::url($category->image)}}"
+                            alt=""></a>
                 </div>
             </div>
             @endforeach

@@ -3,7 +3,7 @@
 <div class="product">
     <a href='#'>
         <div class="product-img">
-            <img src="{{ url('img/'.$product->image) }}" alt="">
+            <img src="{{ Storage::url($product->image)}}" alt="">
         </div>
     </a>
     <div class="product-body">
