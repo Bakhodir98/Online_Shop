@@ -4,6 +4,10 @@
     <a href='#'>
         <div class="product-img">
             <img src="{{ Storage::url($product->image)}}" alt="">
+            <div class="product-label">
+                <span class="sale">-30%</span>
+                <span class="new">NEW</span>
+            </div>
         </div>
     </a>
     <div class="product-body">

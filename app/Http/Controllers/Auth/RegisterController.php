@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -29,7 +30,17 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo;
+    protected function redirectTo()
+    {
+        if (Auth::user()->isAdmin()) {
+            $redirectTo = route('home');
+        } else {
+            $redirectTo =  route('Userorders');
+        }
+    }
+    // protected $redirectTo = RouteServiceProvider::HOME;
+
 
     /**
      * Create a new controller instance.

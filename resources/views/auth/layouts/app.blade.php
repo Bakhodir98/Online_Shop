@@ -40,9 +40,17 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto list">
+                        @auth
+                        @admin
                         <li><a href="{{route('categories.index')}}">Категории</a></li>
                         <li><a href="{{route('products.index')}}">Товары</a></li>
                         <li><a href="{{route('orders')}}">Заказы</a></li>
+
+                        @else
+                        <li><a href="{{route('Userorders')}}">Заказы</a></li>
+                        @endadmin
+                        @endauth
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->

@@ -1,42 +1,46 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use App\Category;
 use App\Product;
 use App\Image;
 use App\Order;
 
 use Illuminate\Http\Request;
+
 class MainController extends Controller
 {
     public function index()
     {
+        // dd(get_class_methods($this->route()));
         $products = Product::get();
         $orderId = session('orderId');
         // dd($orderId);
-        if(!is_null($orderId)){
+        if (!is_null($orderId)) {
             $order = Order::findOrFail($orderId);
             return view('index', compact('products', 'order'));
         }
-        return view('index', compact('products')); 
+        return view('index', compact('products'));
     }
     public function categories()
     {
         $categories = Category::get();
         $orderId = session('orderId');
         // dd($orderId);
-        if(!is_null($orderId)){
+        if (!is_null($orderId)) {
             $order = Order::findOrFail($orderId);
             return view('categories', compact('categories', 'order'));
         }
         return view('categories', compact('categories'));
     }
-    public function product($category = null,$product_code = null)
+    public function product($category = null, $product_code = null)
     {
         $orderId = session('orderId');
         // dd($orderId);
-        $product = Product::where('code',$product_code)->first();
+        $product = Product::where('code', $product_code)->first();
         $images = Image::get();
-        if(!is_null($orderId)){
+        if (!is_null($orderId)) {
             $order = Order::findOrFail($orderId);
             return view('product', compact('product', 'images', 'category', 'order'));
         }
@@ -51,18 +55,19 @@ class MainController extends Controller
         // dd($category);
         $orderId = session('orderId');
         // dd($orderId);
-        if(!is_null($orderId)){
+        if (!is_null($orderId)) {
             $order = Order::findOrFail($orderId);
             return view('category', compact('category', 'order'));
         }
         return view('category', compact('category'));
     }
-    public function card() {
+    public function card()
+    {
         $orderId = session('orderId');
         // dd($orderId);
-        if(!is_null($orderId)){
+        if (!is_null($orderId)) {
             $order = Order::findOrFail($orderId);
-            return view('card', 'order');
+            return view('card', compact('order'));
         }
         return view('card');
     }
@@ -70,14 +75,16 @@ class MainController extends Controller
     {
         return view('welcome');
     }
-    // public function hotDeals()
-    // {
-    //     $orderId = session('orderId');
-    //     // dd($orderId);
-    //     if(!is_null($orderId)){
-    //         $order = Order::findOrFail($orderId);
-    //         return view('hotdeals', 'order');
-    //     }
-    //     return view('hotdeals');
-    // }
+    public function allProducts()
+    {
+        // dd(get_class_methods($this->route()));
+        $products = Product::get();
+        $orderId = session('orderId');
+        // dd($orderId);
+        if (!is_null($orderId)) {
+            $order = Order::findOrFail($orderId);
+            return view('allproducts', compact('products', 'order'));
+        }
+        return view('allproducts', compact('products'));
+    }
 }

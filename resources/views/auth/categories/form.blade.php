@@ -13,7 +13,6 @@
     <h1>Редактировать категорию <b>{{$category->name}}</b></h1>
     @else
     <h1>Добавить категорию</h1>
-
     @endisset
     <form method="POST" enctype="multipart/form-data" @isset($category)
         action="{{route('categories.update', $category)}}" @else action="{{route('categories.store')}}">
@@ -26,22 +25,31 @@
             <div class="input-group row">
                 <label for="code" class="col-sm-2 col-form-label">Код: </label>
                 <div class="col-sm-6">
+                    @error('code')
+                    <div class="alert alert-danger">{{$message}}</div>
+                    @enderror
                     <input type="text" class="form-control" name="code" id="code"
-                        value="@isset($category){{$category->code}}@endisset">
+                        value="{{old('code', isset($category)?$category->code:null)}}">
                 </div>
             </div>
             <div class="input-group row">
                 <label for="name" class="col-sm-2 col-form-label">Название: </label>
                 <div class="col-sm-6">
+                    @error('name')
+                    <div class="alert alert-danger">{{$message}}</div>
+                    @enderror
                     <input type="text" class="form-control" name="name" id="name"
-                        value="@isset($category){{$category->name}}@endisset">
+                        value="{{old('name', isset($category)?$category->name:null)}}">
                 </div>
             </div>
             <div class="input-group row">
                 <label for="description" class="col-sm-2 col-form-label">Описание: </label>
                 <div class="col-sm-6">
-                    <textarea name="description" id="description" cols="73"
-                        rows="7">@isset($category){{$category->description}}@endisset</textarea>
+                    @error('description')
+                    <div class="alert alert-danger">{{$message}}</div>
+                    @enderror
+                    <textarea name="description" id="description"
+                        rows="7">{{old('description', isset($category)?$category->description:null)}}</textarea>
                 </div>
             </div>
             <div class="input-group row">

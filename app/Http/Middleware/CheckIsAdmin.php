@@ -18,9 +18,9 @@ class CheckIsAdmin
     public function handle($request, Closure $next)
     {
         $user = Auth::user();
+        // dd('i hate you');
 
         if (!($user->is_admin === 1)) {
-            // dd('i hate you');
             session()->flash('warning', 'У вас нет прав админа');
             return redirect()->route('index');
         }

@@ -4,7 +4,7 @@
     <div class="starter-template">
         <div class="justify-content-center">
             <h1>Корзина</h1>
-            <p>Оформление закза</p>
+            <p>Оформление заказа</p>
         </div>
         <div class="panel">
             <table class="table table-striped">

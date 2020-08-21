@@ -2257,7 +2257,7 @@ h2 {
     font-weight: 700;
 }
 .justify-content-center{
-    text-align: center;
+    /* text-align: center; */
     margin: 0 auto;
 }
 .form-group{
@@ -2282,3 +2282,10 @@ h2 {
   .list li{
       margin:5px;
   }
+.input-group{
+    margin-bottom: 5px;
+}
+#description, #details{
+    display: block;
+    width: 100%;
+}

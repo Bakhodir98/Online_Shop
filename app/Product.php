@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $fillable = ['category_id', 'code', 'name', 'description', 'details', 'price', 'old_price', 'image'];
+    protected $fillable = ['category_id', 'code', 'name', 'description', 'details', 'price', 'old_price', 'image', 'new', 'sale', 'popular'];
     // public function getCategory()
     // {
     //    return Category::find($this->category_id);
@@ -29,5 +29,18 @@ class Product extends Model
             return $this->pivot->count;
         }
         return 0;
+    }
+
+    public function isNew()
+    {
+        $this->new === 1;
+    }
+    public function isSale()
+    {
+        $this->sale === 1;
+    }
+    public function isPopular()
+    {
+        $this->popular === 1;
     }
 }

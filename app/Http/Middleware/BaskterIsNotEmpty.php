@@ -20,11 +20,11 @@ class BaskterIsNotEmpty
         if (!is_null($orderId)) {
             $order = Order::findOrFail($orderId);
             // dd($order->products);
-            if ($order->products->count() == 0) {
-                session()->flash('warning', 'Корзина пустая');
-                return redirect()->route('index');
+            if ($order->products->count() > 0) {
+                return $next($request);
             }
         }
-        return $next($request);
+        session()->flash('warning', 'Корзина пустая');
+        return redirect()->route('index');
     }
 }

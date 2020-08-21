@@ -51,10 +51,18 @@
             <ul class="header-links pull-right">
                 <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
                 @guest
-                <li><a href="{{route('login')}}"><i class="fa fa-user-o"></i> Мой аккаунт</a></li>
+                <li><a href="{{route('login')}}"><i class="fa fa-user-o"></i> Войти</a></li>
                 @endguest
                 @auth
-                <li><a href="{{route('home')}}"><i class="fa fa-user-o"></i> Мой аккаунт</a></li>
+                @admin
+                {
+                <li><a href="{{route('home')}}"><i class="fa fa-user-o"></i>Панель админстратора</a></li>
+                }
+                @else
+                {
+                <li><a href="{{route('Userorders')}}"><i class="fa fa-user-o"></i>Мои заказы</a></li>
+                }
+                @endadmin
                 <li><a href="{{route('get-logout')}}">Выйти</a></li>
                 @endauth
             </ul>
@@ -124,7 +132,7 @@
                                     @foreach ($order->products as $product)
                                     <div class="product-widget">
                                         <div class="product-img">
-                                            <img src="{{asset('img/'.$product->image)}}" alt="">
+                                            <img src="{{ Storage::url($product->image)}}" alt="">
                                         </div>
                                         <div class="product-body">
                                             <h3 class="product-name"><a href="#">{{$product->name}}</a></h3>
@@ -203,13 +211,21 @@
         <div id="responsive-nav">
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
-                <li class="active"><a href="{{ url('/') }}">Главная</a></li>
+                <li @routeactive('index')><a href="{{ route('index') }}">Главная</a>
+                </li>
                 {{-- <li><a href="{{route('hot-deals')}}">Акции</a></li> --}}
-                <li><a href="{{ url('categories') }}">Категории</a></li>
-                <li><a href="{{url('/Ноутбуки')}}">Ноутбуки</a></li>
-                <li><a href="{{url('/Мобильные_телефоны')}}">Смартфоны</a></li>
-                <li><a href="{{url('/Камеры')}}">Камеры</a></li>
-                <li><a href="{{url('/Аксессуары')}}">Аксессуары</a></li>
+                <li @routeactive('categor*')><a href="{{ route('categories') }}">Категории</a></li>
+                <li @routeactive('allProducts')><a href="{{ route('allProducts') }}">Все товары</a></li>
+                <li @routeactive('basket*')> <a href="{{route('basket')}}">В корзину</a></li>
+                <li @routeactive('reset')> <a href="{{route('reset')}}">Сбросить проект в началное состояние</a></li>
+                {{-- <li @if(Route::currentRouteNamed('category'))class="active" @endif><a
+                        href="{{url('/Ноутбуки')}}">Ноутбуки</a></li>
+                <li @if(Route::currentRouteNamed('category'))class="active" @endif><a
+                        href="{{url('/Смартфоны')}}">Смартфоны</a></li>
+                <li @if(Route::currentRouteNamed('category'))class="active" @endif><a
+                        href="{{url('/Камеры')}}">Камеры</a></li>
+                <li @if(Route::currentRouteNamed('category'))class="active" @endif><a
+                        href="{{url('/Аксессуары')}}">Аксессуары</a></li> --}}
             </ul>
             <!-- /NAV -->
         </div>
@@ -329,7 +345,6 @@
                         </ul>
                     </div>
                 </div>
-
                 <div class="col-md-3 col-xs-6">
                     <div class="footer">
                         <h3 class="footer-title">Обслуживание</h3>
